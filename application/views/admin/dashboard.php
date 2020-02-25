@@ -1,7 +1,3 @@
-<?php
-include "template/head.php";
-include "template/menu.php";
-?>
 <!-- Main Content -->
 <div class="main-content">
     <section class="section">
@@ -21,7 +17,7 @@ include "template/menu.php";
                                 <h4>Total User</h4>
                             </div>
                             <div class="card-body">
-                                10
+                                <?= $jumlahUser; ?>
                             </div>
                         </div>
                     </div>
@@ -36,7 +32,7 @@ include "template/menu.php";
                                 <h4>Total Atlet</h4>
                             </div>
                             <div class="card-body">
-                                42
+                                <?= $jumlahAtlet; ?>
                             </div>
                         </div>
                     </div>
@@ -51,7 +47,7 @@ include "template/menu.php";
                                 <h4>Total Event</h4>
                             </div>
                             <div class="card-body">
-                                1
+                                <?= $jumlahEvent; ?>
                             </div>
                         </div>
                     </div>
@@ -66,7 +62,7 @@ include "template/menu.php";
                                 <h4>Atlet Verifikasi</h4>
                             </div>
                             <div class="card-body">
-                                47
+                                <?= $jumlahAtletVerifikasi; ?>
                             </div>
                         </div>
                     </div>
@@ -122,7 +118,7 @@ include "template/menu.php";
                     <div class="card-body">
                         <h4>Tambah Event</h4>
                         <p>untuk menambah event pertandingan.</p>
-                        <a href="features-setting-detail.html" class="card-cta">Klik Disini <i class="fas fa-chevron-right"></i></a>
+                        <a href="<?= base_url('Event/') ?>" class="card-cta">Klik Disini <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -143,72 +139,26 @@ include "template/menu.php";
                             <table class="table table-striped">
                                 <tr>
                                     <th>Invoice ID</th>
-                                    <th>User</th>
+                                    <th>Tanggal</th>
+                                    <th>Jumlah Bayar</th>
                                     <th>Status</th>
-                                    <th>Tanggal Invoice</th>
-                                    <th>Tenggat Waktu</th>
                                     <th>Aksi</th>
                                 </tr>
-                                <tr>
-                                    <td><a href="#">INV-87239</a></td>
-                                    <td class="font-weight-600">Kusnadi</td>
-                                    <td>
-                                        <div class="badge badge-warning">Belum Lunas</div>
-                                    </td>
-                                    <td>July 19, 2018</td>
-                                    <td>July 21, 2018</td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">INV-48574</a></td>
-                                    <td class="font-weight-600">Hasan Basri</td>
-                                    <td>
-                                        <div class="badge badge-success">Lunas</div>
-                                    </td>
-                                    <td>July 21, 2018</td>
-                                    <td>July 21, 2018</td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">INV-76824</a></td>
-                                    <td class="font-weight-600">Muhamad Nuruzzaki</td>
-                                    <td>
-                                        <div class="badge badge-danger">Expired</div>
-                                    </td>
-                                    <td>July 22, 2018</td>
-                                    <td>July 21, 2018</td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">INV-84990</a></td>
-                                    <td class="font-weight-600">Agung Ardiansyah</td>
-                                    <td>
-                                        <div class="badge badge-warning">Unpaid</div>
-                                    </td>
-                                    <td>July 22, 2018</td>
-                                    <td>July 21, 2018</td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">INV-87320</a></td>
-                                    <td class="font-weight-600">Ardian Rahardiansyah</td>
-                                    <td>
-                                        <div class="badge badge-success">Paid</div>
-                                    </td>
-                                    <td>July 28, 2018</td>
-                                    <td>July 21, 2018</td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
+                                <?php
+                                foreach ($getAllInvoice as $invoice) {
+                                ?>
+                                    <tr>
+                                        <td><a href="#"><?= $invoice['noInvoice'] ?></a></td>
+                                        <td class="font-weight-600"><?= $invoice['tanggalInvoice'] ?></td>
+                                        <td><?= $invoice['jumlahBayar'] ?></td>
+                                        <td>Status/td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary">Detail</a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
                             </table>
                         </div>
                     </div>
@@ -217,6 +167,3 @@ include "template/menu.php";
         </div>
     </section>
 </div>
-<?php
-include "template/footer.php";
-?>

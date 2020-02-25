@@ -102,7 +102,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInput">Keterangan Event</label>
-                        <textarea class="form-control" name="keteranganUser" id="" cols="30" rows="10"></textarea>
+                        <textarea class="form-control" name="keteranganEvent" id="" cols="30" rows="10"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Tempat</label>

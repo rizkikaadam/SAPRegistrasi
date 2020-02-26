@@ -8,6 +8,12 @@ class Dashboard extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('MInvoice', 'invoice');
+        if (!$this->session->userdata('username')) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Login terlebih dulu!
+            </div>');
+            redirect('login');
+        }
     }
 
     public function index()
@@ -22,5 +28,14 @@ class Dashboard extends CI_Controller
         $this->load->view('admin/template/menu');
         $this->load->view('admin/dashboard', $data);
         $this->load->view('admin/template/footer');
+    }
+
+    public function userPage()
+    {
+        $this->load->view('user/template/head');
+        $this->load->view('user/template/topbar');
+        $this->load->view('user/template/menu');
+        $this->load->view('user/home');
+        $this->load->view('user/template/footer');
     }
 }

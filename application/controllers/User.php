@@ -8,6 +8,12 @@ class User extends CI_Controller
         parent::__construct();
         $this->load->model('MUser', 'user');
         $this->load->library('form_validation');
+        if (!$this->session->userdata('username')) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Login terlebih dulu!
+            </div>');
+            redirect('login');
+        }
     }
 
     public function tampil()

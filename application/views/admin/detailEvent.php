@@ -79,7 +79,68 @@ foreach ($detailEvent as $event) {
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Detail Peserta</h4>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped" id="table-1">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th>Jumlah Sekolah SD</th>
+                                        <th>Jumlah Sekolah SMP</th>
+                                        <th>Jumlah Sekolah SMA</th>
+                                        <th>Jumlah Keseluruhan Peserta</th>
+                                    </tr>
+                                </thead>
+                                <tr class="text-center">
+                                    <th>10</th>
+                                    <th>10</th>
+                                    <th>10</th>
+                                    <th>30</th>
+                                </tr>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer bg-whitesmoke">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Detail Nomor Pertandingan</h4>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped" id="table-2">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th>No.</th>
+                                        <th>Nomor Pertandingan</th>
+                                        <th>Jumlah</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tr class="text-center">
+                                    <th>1</th>
+                                    <th>Lari 60 M</th>
+                                    <th>10</th>
+                                    <th><a href="" class="btn btn-info">Download</a></th>
+                                </tr>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer bg-whitesmoke">
+                        </div>
+                    </div>
+                </div>
+            </div>
     </section>
 </div>
 

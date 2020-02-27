@@ -2,13 +2,13 @@
     <div class="container">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a href="home.php" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
+                <a href="<?= base_url('Dashboard/userPage') ?>" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a href="profile.php" class="nav-link"><i class="far fa-user"></i><span>Profile</span></a>
+                <a href="<?= base_url('Profile/userProfile') ?>" class="nav-link"><i class="far fa-user"></i><span>Profile</span></a>
             </li>
             <li class="nav-item">
-                <a href="atlet.php" class="nav-link"><i class="fas fa-user"></i><span>Atlet</span></a>
+                <a href="<?= base_url('Atlet/AtletUser') ?>" class="nav-link"><i class="fas fa-user"></i><span>Atlet</span></a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link"><i class="fas fa-calendar"></i><span>Event</span>
@@ -16,7 +16,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="pembayaran.php" class="nav-link"><i class="fas fa-shopping-cart"></i><span>Pembayaran</span></a>
+                <a href="<?= base_url('Pertandingan/konfirmasi') ?>" class="nav-link"><i class="fas fa-shopping-cart"></i><span>Pembayaran</span></a>
             </li>
         </ul>
     </div>

@@ -1,8 +1,3 @@
-<?php
-include "template/head.php";
-include "template/menu.php";
-?>
-<!-- Main Content -->
 <div class="main-content">
     <section class="section">
         <div class="section-header">
@@ -89,6 +84,3 @@ include "template/menu.php";
         </div>
     </section>
 </div>
-<?php
-include "template/footer.php";
-?>

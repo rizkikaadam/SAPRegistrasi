@@ -56,6 +56,7 @@ class Login extends CI_Controller
             if (password_verify($password, $user['password'])) {
                 $data = [
                     'username' => $user['username'],
+                    'nama' => $user['nama'],
                     'idUser' => $user['idUser'],
                     'foto' => $user['fotoUser']
                 ];
@@ -112,6 +113,13 @@ class Login extends CI_Controller
           </div>');
             redirect('login');
         }
+    }
+
+    public function forget()
+    {
+        $this->load->view('admin/template/head');
+        $this->load->view('auth/lupaPassword');
+        $this->load->view('admin/template/footer');
     }
     public function logout()
     {

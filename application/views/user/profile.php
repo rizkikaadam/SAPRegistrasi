@@ -1,8 +1,3 @@
-<?php
-include "template/head.php";
-include "template/topbar.php";
-include "template/menu.php";
-?>
 <!-- Main Content -->
 <div class="main-content">
     <section class="section">
@@ -117,7 +112,3 @@ include "template/menu.php";
     </div>
 </div>
 <!-- modal konfirmasi -->
-
-<?php
-include "template/footer.php";
-?>

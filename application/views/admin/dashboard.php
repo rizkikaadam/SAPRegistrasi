@@ -82,7 +82,7 @@
                     <div class="card-body">
                         <h4>Pendaftaran</h4>
                         <p>Untuk pendaftaran event</p>
-                        <a href="features-setting-detail.html" class="card-cta">Klik Disini <i class="fas fa-chevron-right"></i></a>
+                        <a href="#" class="card-cta">Klik Disini <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                     <div class="card-body">
                         <h4>Konfirmasi Pembayaran</h4>
                         <p>Untuk melihat konfirmasi pembayaran yang telah dilakukan</p>
-                        <a href="features-setting-detail.html" class="card-cta">Klik Disini <i class="fas fa-chevron-right"></i></a>
+                        <a href="#" class="card-cta">Klik Disini <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                     <div class="card-body">
                         <h4>Formulir Pendaftaran</h4>
                         <p>Format file pendaftaran untuk dapat di import kedalam sistem.</p>
-                        <a href="features-setting-detail.html" class="card-cta">Klik Disini <i class="fas fa-chevron-right"></i></a>
+                        <a href="#" class="card-cta">Klik Disini <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@
                     <div class="card-header">
                         <h4><i class="fas fa-file-invoice"></i> Data Invoice</h4>
                         <div class="card-header-action">
-                            <a href="#" class="btn btn-danger">Lihat Lainnya <i class="fas fa-chevron-right"></i></a>
+                            <a href="<?= base_url('Invoice') ?>" class="btn btn-danger">Lihat Lainnya <i class="fas fa-chevron-right"></i></a>
                         </div>
                     </div>
                     <div class="card-body p-0">

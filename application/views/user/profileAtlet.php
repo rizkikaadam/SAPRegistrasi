@@ -36,16 +36,6 @@ foreach ($detailAtlet as $Atlet) {
                                 ?>
                             </div> <a href="#" class="text-xs">Edit Sekolah</a> | <a href="#" class="text-xs">Tambah Sekolah</a>
                             <div class="user-cta">
-
-                                <?php
-
-                                if ($Atlet['verifikasi'] == 0) {
-                                    echo "<a href='#' data-toggle='modal' data-target='#verifikasi' class='btn btn-info'>Verifikasi</a>";
-                                } else {
-                                    echo "<span class='badge badge-success'>Verifikasi Sukses</span>";
-                                }
-
-                                ?>
                             </div>
                         </div>
                     </div>
@@ -56,7 +46,7 @@ foreach ($detailAtlet as $Atlet) {
                             <h4>Edit Profile</h4>
                         </div>
                         <div class="card-body">
-                            <form action="<?= base_url('atlet/editProses') ?>" method="post">
+                            <form action="<?= base_url('atlet/editProsesUser') ?>" method="post">
                                 <div class="form-group row">
                                     <div class="col">
                                         <label for="exampleInputEmail1">Nama</label>
@@ -91,7 +81,6 @@ foreach ($detailAtlet as $Atlet) {
             </div>
             <div class="row">
                 <!-- Dokumen -->
-                <!-- Dokumen -->
                 <div class="col-lg">
                     <div class="card">
                         <div class="card-header">
@@ -104,12 +93,12 @@ foreach ($detailAtlet as $Atlet) {
                                     echo "<li class='list-group-item d-flex justify-content-between align-items-center'>
                                     " . $dataDokumen['akte'] . "
                                     <span><a href=" . base_url('assets/file/' . $dataDokumen['akte']) . " target='_blank'>Lihat</a></span>
-                                    <span><a href=''>edit</a></span>
+                                    <span><a href='' data-toggle='modal' data-target='#akte'>edit</a></span>
                                 </li>";
                                     echo "<li class='list-group-item d-flex justify-content-between align-items-center'>
                                     " . $dataDokumen['dok'] . "
                                     <span><a href=" . base_url('assets/file/' . $dataDokumen['dok']) . " target='_blank'>Lihat</a></span>
-                                    <span><a href=''>edit</a></span>
+                                    <span><a href='' data-toggle='modal' data-target='#dok' >edit</a></span>
                                 </li>";
                                 }
                                 ?>
@@ -189,25 +178,58 @@ foreach ($detailAtlet as $Atlet) {
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="verifikasi" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="dok" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Ganti Dokumen</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>Apakah Anda yakin akan verifikasi atlet ini?</p>
-                <form action="<?= base_url('Atlet/verfikasi') ?>" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url('Atlet/gantiDok') ?>" method="post" enctype="multipart/form-data">
+                    <div class="custom-file">
+                        <input type="file" name="dok" class="custom-file-input" id="customFile">
+
+                        <label class="custom-file-label" for="customFile">Pilih File</label>
+                        <small class="text-danger">Foto maks. 2Mb jenis PDF</small>
+                    </div>
             </div>
             <div class="modal-footer">
                 <input type="hidden" name="idAtlet" value="<?= $Atlet['idAtlet']; ?>">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-                <button type="submit" class="btn btn-primary">Ya</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="akte" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Ganti Dokumen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= base_url('Atlet/gantiAkte') ?>" method="post" enctype="multipart/form-data">
+                    <div class="custom-file">
+                        <input type="file" name="akte" class="custom-file-input" id="customFile">
+
+                        <label class="custom-file-label" for="customFile">Pilih File</label>
+                        <small class="text-danger">Foto maks. 2Mb jenis PDF</small>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" name="idAtlet" value="<?= $Atlet['idAtlet']; ?>">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->

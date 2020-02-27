@@ -36,16 +36,6 @@ foreach ($detailAtlet as $Atlet) {
                                 ?>
                             </div> <a href="#" class="text-xs">Edit Sekolah</a> | <a href="#" class="text-xs">Tambah Sekolah</a>
                             <div class="user-cta">
-
-                                <?php
-
-                                if ($Atlet['verifikasi'] == 0) {
-                                    echo "<a href='#' data-toggle='modal' data-target='#verifikasi' class='btn btn-info'>Verifikasi</a>";
-                                } else {
-                                    echo "<span class='badge badge-success'>Verifikasi Sukses</span>";
-                                }
-
-                                ?>
                             </div>
                         </div>
                     </div>
@@ -91,29 +81,13 @@ foreach ($detailAtlet as $Atlet) {
             </div>
             <div class="row">
                 <!-- Dokumen -->
-                <!-- Dokumen -->
                 <div class="col-lg">
                     <div class="card">
                         <div class="card-header">
                             <h4>Dokumen Atlet</h4>
                         </div>
                         <div class="card-body">
-                            <ul class="list-group">
-                                <?php
-                                foreach ($getDokumenById as $dataDokumen) {
-                                    echo "<li class='list-group-item d-flex justify-content-between align-items-center'>
-                                    " . $dataDokumen['akte'] . "
-                                    <span><a href=" . base_url('assets/file/' . $dataDokumen['akte']) . " target='_blank'>Lihat</a></span>
-                                    <span><a href=''>edit</a></span>
-                                </li>";
-                                    echo "<li class='list-group-item d-flex justify-content-between align-items-center'>
-                                    " . $dataDokumen['dok'] . "
-                                    <span><a href=" . base_url('assets/file/' . $dataDokumen['dok']) . " target='_blank'>Lihat</a></span>
-                                    <span><a href=''>edit</a></span>
-                                </li>";
-                                }
-                                ?>
-                            </ul>
+
                         </div>
                         <div class="card-footer bg-whitesmoke">
                         </div>
@@ -126,18 +100,7 @@ foreach ($detailAtlet as $Atlet) {
                             <h4>Nomor Pertandingan</h4>
                         </div>
                         <div class="card-body">
-                            <ul class="list-group">
-                                <?php
-                                foreach ($getNomorPertandinganById as $dataNomorPertandingan) {
-                                    echo "<li class='list-group-item d-flex justify-content-between align-items-center'>
-                                    " . $dataNomorPertandingan['nomorPertandingan'] . " (" . $dataNomorPertandingan['kelompok'] . ")
-                                    <span><a href=''>Hapus</a></span>
-                                </li>";
-                                }
-                                ?>
-                            </ul>
-                            <br>
-                            <span><a href="">Tambah Nomor Pertandingan</a></span>
+
                         </div>
                         <div class="card-footer bg-whitesmoke">
                         </div>
@@ -183,29 +146,6 @@ foreach ($detailAtlet as $Atlet) {
                 <input type="hidden" name="idAtlet" value="<?= $Atlet['idAtlet']; ?>">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Simpan</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="verifikasi" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Apakah Anda yakin akan verifikasi atlet ini?</p>
-                <form action="<?= base_url('Atlet/verfikasi') ?>" method="post" enctype="multipart/form-data">
-            </div>
-            <div class="modal-footer">
-                <input type="hidden" name="idAtlet" value="<?= $Atlet['idAtlet']; ?>">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-                <button type="submit" class="btn btn-primary">Ya</button>
                 </form>
             </div>
         </div>

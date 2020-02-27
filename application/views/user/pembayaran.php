@@ -1,8 +1,3 @@
-<?php
-include "template/head.php";
-include "template/topbar.php";
-include "template/menu.php";
-?>
 <!-- Main Content -->
 <div class="main-content">
     <section class="section">
@@ -19,7 +14,7 @@ include "template/menu.php";
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="invoice-title">
-                                <h2>Invoice</h2>
+                                <h2>Detail Pendaftaran</h2>
                                 <div class="invoice-number">Order #12345</div>
                             </div>
                             <hr>
@@ -123,7 +118,3 @@ include "template/menu.php";
         </div>
     </section>
 </div>
-
-<?php
-include "template/footer.php";
-?>

@@ -1,8 +1,3 @@
-<?php
-include "template/head.php";
-include "template/topbar.php";
-include "template/menu.php";
-?>
 <!-- Main Content -->
 <div class="main-content">
     <section class="section">
@@ -21,19 +16,19 @@ include "template/menu.php";
                     <h4>Formulir Konfirmasi Pembayaran</h4>
                 </div>
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="<?= base_url('pertandingan/konfirmasiPembayaran') ?>" method="post">
                         <div class="form-group">
                             <label>Kode Invoice</label>
-                            <input type="text" class="form-control" placeholder="Kode Invoice">
+                            <input type="text" class="form-control" placeholder="Kode Invoice" name="kode">
                         </div>
                         <div class="form-group">
                             <label>Jumlah Transfer</label>
-                            <input type="text" class="form-control" placeholder="Jumlah Transfer">
+                            <input type="text" class="form-control" placeholder="Jumlah Transfer" name="transfer">
                         </div>
                         <div class="section-title">Bukti Transfer</div>
                         <div class="custom-file">
                             <label>Foto</label>
-                            <input type="file" class="custom-file-input" id="customFile">
+                            <input type="file" class="custom-file-input" id="customFile" name="bukti">
                             <label class="custom-file-label" for="customFile">Pilih File</label>
                         </div>
                         <div class="form-group mt-3">
@@ -69,7 +64,3 @@ include "template/menu.php";
     </div>
 </div>
 <!-- modal konfirmasi -->
-
-<?php
-include "template/footer.php";
-?>

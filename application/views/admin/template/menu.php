@@ -70,8 +70,8 @@
                         </div>
                     </li> -->
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-                            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
+                            <img alt="image" src="<?= base_url('assets/img/' . $this->session->userdata('foto')) ?>" class="rounded-circle mr-1">
+                            <div class="d-sm-none d-lg-inline-block">Hi, <b class="text-success"><?= $this->session->userdata('nama'); ?></b></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <!-- <div class="dropdown-title">Logged in 5 min ago</div>
@@ -98,7 +98,6 @@
                         <a href="index.html">SAP</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href="index.html">St</a>
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">Dashboard</li>
@@ -107,6 +106,7 @@
                         <li><a class="nav-link" href="<?= base_url('User/')  ?>"><i class="fas fa-users"></i> <span>Data User</span></a></li>
                         <li><a class="nav-link" href="<?= base_url('Atlet/')  ?>"><i class="fas fa-running"></i> <span>Data Atlet</span></a></li>
                         <li><a class="nav-link" href="<?= base_url('Event/')  ?>"><i class="fas fa-calendar-alt"></i> <span>Data Event</span></a></li>
+                        <li><a class="nav-link" href="<?= base_url('Invoice/')  ?>"><i class="fas fa-file-invoice"></i> <span>Data Invoice</span></a></li>
                         <li class="menu-header">Setting</li>
                         <li><a class="nav-link" href="<?= base_url('Profile/')  ?>"><i class="fas fa-user-cog"></i> <span>My profile</span></a></li>
                         <li><a class="nav-link" href="<?= base_url('Pertandingan/nomorPertandingan/')  ?>"><i class="fas fa-list-alt"></i> <span>Nomor Pertandingan</span></a></li>

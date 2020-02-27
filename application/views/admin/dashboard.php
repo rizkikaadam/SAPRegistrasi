@@ -151,7 +151,13 @@
                                         <td><a href="#"><?= $invoice['noInvoice'] ?></a></td>
                                         <td class="font-weight-600"><?= $invoice['tanggalInvoice'] ?></td>
                                         <td><?= $invoice['jumlahBayar'] ?></td>
-                                        <td>Status/td>
+                                        <td><?php
+                                            if ($invoice['status'] == '1') {
+                                                echo "<div class='badge badge-success'>Sudah Bayar</div>";
+                                            } else {
+                                                echo "<div class='badge badge-danger'>Belum Bayar</div>";
+                                            }
+                                            ?></td>
                                         <td>
                                             <a href="#" class="btn btn-primary">Detail</a>
                                         </td>

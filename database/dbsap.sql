@@ -31,13 +31,40 @@ CREATE TABLE `tbl_atlet` (
   `tanggalDaftar` date DEFAULT NULL,
   `verifikasi` char(1) DEFAULT '0',
   `statusAtlet` char(1) DEFAULT '1',
+  `idUser` int(128) DEFAULT NULL,
   PRIMARY KEY (`idAtlet`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tbl_atlet` */
 
-insert  into `tbl_atlet`(`idAtlet`,`namaAtlet`,`tempatLahir`,`tanggalLahir`,`alamatAtlet`,`noHandphone`,`fotoAtlet`,`tanggalDaftar`,`verifikasi`,`statusAtlet`) values 
-(1,'Sukadini','bandung','2020-02-10','jl. Melong Asih no. 14',NULL,'3652871.jpg','2020-02-25','0','1');
+insert  into `tbl_atlet`(`idAtlet`,`namaAtlet`,`tempatLahir`,`tanggalLahir`,`alamatAtlet`,`noHandphone`,`fotoAtlet`,`tanggalDaftar`,`verifikasi`,`statusAtlet`,`idUser`) values 
+(1,'Sukadini','bandung','2020-02-10','jl. Melong Asih no. 14',NULL,'3652871.jpg','2020-02-25','0','1',12),
+(2,'Fatimah','Bandung','2020-02-12','Jalan Kopo Permai',NULL,'user-default.jpg','2020-02-26','0','1',12),
+(3,'as','as','2020-02-19','asd',NULL,'3652872.jpg','2020-02-26','0','1',12),
+(4,'Ryan Effendi','Kencana','2020-02-26','Jalan Sedap Malam 6 No. 14',NULL,'3652873.jpg','2020-02-26','0','1',12),
+(5,'Juju Kusnadi','Bandung','2020-02-10','bandung',NULL,'Juju Kusnadi_download_(1)4.jpg','2020-02-26','1','1',12),
+(6,'Fatimah','Rancaekek','2020-02-02','Jalan Sedap mal;am 6 no. 14',NULL,'wallhaven-gjzg2e.jpg','2020-02-27','0','1',4),
+(7,'Dimas','Banjanaran','2020-02-19','Jalan Banjaran',NULL,'custom_–_1.png','2020-02-27','0','1',14);
+
+/*Table structure for table `tbl_dokumenatlet` */
+
+DROP TABLE IF EXISTS `tbl_dokumenatlet`;
+
+CREATE TABLE `tbl_dokumenatlet` (
+  `idDokumenAtlet` int(128) NOT NULL AUTO_INCREMENT,
+  `idAtlet` int(128) DEFAULT NULL,
+  `akte` varchar(128) DEFAULT NULL,
+  `dok` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`idDokumenAtlet`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `tbl_dokumenatlet` */
+
+insert  into `tbl_dokumenatlet`(`idDokumenAtlet`,`idAtlet`,`akte`,`dok`) values 
+(1,4,'tset.pdf_4','tset.pdf_4'),
+(2,5,'akte_tset.pdf5','dokumen_tset.pdf5'),
+(3,6,'tabel-formasi.pdf','tabel-formasi.pdf'),
+(4,7,'E-Voucher_—.pdf','tabel-formasi.pdf');
 
 /*Table structure for table `tbl_event` */
 
@@ -56,9 +83,12 @@ CREATE TABLE `tbl_event` (
   `syaratEvent` text DEFAULT NULL,
   `tempat` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`idEvent`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tbl_event` */
+
+insert  into `tbl_event`(`idEvent`,`namaEvent`,`tglEventMulai`,`tglEventSelesai`,`tglPendaftaranMulai`,`tglPendaftaranSelesai`,`fotoEvent`,`keteranganEvent`,`deskripsiEvent`,`syaratEvent`,`tempat`) values 
+(1,'SAP CUP 3','2020-03-14','2020-02-16','2020-02-02','2020-02-11',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `tbl_invoice` */
 
@@ -73,10 +103,15 @@ CREATE TABLE `tbl_invoice` (
   `pendamping` varchar(128) DEFAULT NULL,
   `jumlahAtlet` int(128) DEFAULT NULL,
   `idEvent` int(128) DEFAULT NULL,
+  `noHpPendamping` varchar(50) DEFAULT NULL,
+  `status` varchar(1) DEFAULT '0',
   PRIMARY KEY (`idInvoice`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tbl_invoice` */
+
+insert  into `tbl_invoice`(`idInvoice`,`noInvoice`,`tanggalInvoice`,`jumlahBayar`,`idUser`,`pendamping`,`jumlahAtlet`,`idEvent`,`noHpPendamping`,`status`) values 
+(1,'1211326022020','2020-02-26 00:00:00',140000,12,'Rizkika Adam Pratama',5,1,'081222097865','0');
 
 /*Table structure for table `tbl_kelompokpertandingan` */
 
@@ -95,6 +130,21 @@ insert  into `tbl_kelompokpertandingan`(`idKelompokPertandingan`,`namaKelompokPe
 (2,'Kelompok SMP'),
 (3,'Kelompok SMA');
 
+/*Table structure for table `tbl_konfirmasi` */
+
+DROP TABLE IF EXISTS `tbl_konfirmasi`;
+
+CREATE TABLE `tbl_konfirmasi` (
+  `idKonfimasi` int(128) NOT NULL AUTO_INCREMENT,
+  `idInvoice` int(128) DEFAULT NULL,
+  `jmlTransfer` int(128) DEFAULT NULL,
+  `bukti` varchar(128) DEFAULT NULL,
+  `tglKonfirmasi` date DEFAULT NULL,
+  PRIMARY KEY (`idKonfimasi`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `tbl_konfirmasi` */
+
 /*Table structure for table `tbl_nomorpertandingan` */
 
 DROP TABLE IF EXISTS `tbl_nomorpertandingan`;
@@ -104,59 +154,69 @@ CREATE TABLE `tbl_nomorpertandingan` (
   `nomorPertandingan` varchar(128) DEFAULT NULL,
   `kelompok` varchar(128) DEFAULT NULL,
   `kelas` varchar(128) DEFAULT NULL,
+  `jenis` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`idNomorPertandingan`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tbl_nomorpertandingan` */
 
-insert  into `tbl_nomorpertandingan`(`idNomorPertandingan`,`nomorPertandingan`,`kelompok`,`kelas`) values 
-(2,'Lari 60M','SD','Kelas 1,2'),
-(3,'Lari 60M','SD','Kelas 3,4'),
-(4,'Lari 60M','SD','Kelas 5,6'),
-(5,'Lari 600M','SD','Kelas 1,2'),
-(6,'Lari 600M','SD','Kelas 3,4'),
-(7,'Lari 600M','SD','Kelas 5,6'),
-(8,'Lompat Jauh','SD','Kelas 1,2'),
-(9,'Lompat Jauh','SD','Kelas 3,4'),
-(10,'Lompat Jauh','SD','Kelas 5,6'),
-(11,'Lempar Bola','SD','Kelas 1,2'),
-(12,'Lempar Bola','SD','Kelas 3,4'),
-(13,'Lempar Bola','SD','Kelas 5,6'),
-(14,'5x80M Estafet','SD','Kelas 1,2'),
-(15,'5x80M Estafet','SD','Kelas 3,4'),
-(16,'5x80M Estafet','SD','Kelas 5,6'),
-(17,'Lari 100M','SMP','Kelas 7,8,9'),
-(18,'Lari 100M','SMA','Kelas 10,11,12'),
-(19,'Lari 400M','SMP','Kelas 7,8,9'),
-(20,'Lari 400M','SMA','Kelas 10,11,12'),
-(21,'Lari 800M','SMP','Kelas 7,8,9'),
-(22,'Lari 800M','SMA','Kelas 10,11,12'),
-(23,'Lari 1500M','SMP','Kelas 7,8,9'),
-(24,'Lari 1500M','SMA','Kelas 10,11,12'),
-(25,'Jalan Cepat 3000M','SMP','Kelas 7,8,9'),
-(26,'Jalan Cepat 3000M','SMA','Kelas 10,11,12'),
-(27,'Lompat Jauh','SMP','Kelas 7,8,9'),
-(28,'Lompat Jauh','SMA','Kelas 10,11,12'),
-(29,'Lompat Tinggi','SMP','Kelas 7,8,9'),
-(30,'Lompat Tinggi','SMA','Kelas 10,11,12'),
-(31,'Tolak Peluru','SMP','Kelas 7,8,9'),
-(32,'Tolak Peluru','SMA','Kelas 10,11,12'),
-(33,'4x100M Estafet','SMP','Kelas 7,8,9'),
-(34,'4x100M Estafet','SMA','Kelas 10,11,12'),
-(35,'Lempar Lembing','SMA','Kelas 10,11,12');
+insert  into `tbl_nomorpertandingan`(`idNomorPertandingan`,`nomorPertandingan`,`kelompok`,`kelas`,`jenis`) values 
+(2,'Lari 60M','SD','Kelas 1,2','1'),
+(3,'Lari 60M','SD','Kelas 3,4','1'),
+(4,'Lari 60M','SD','Kelas 5,6','1'),
+(5,'Lari 600M','SD','Kelas 1,2','1'),
+(6,'Lari 600M','SD','Kelas 3,4','1'),
+(7,'Lari 600M','SD','Kelas 5,6','1'),
+(8,'Lompat Jauh','SD','Kelas 1,2','1'),
+(9,'Lompat Jauh','SD','Kelas 3,4','1'),
+(10,'Lompat Jauh','SD','Kelas 5,6','1'),
+(11,'Lempar Bola','SD','Kelas 1,2','1'),
+(12,'Lempar Bola','SD','Kelas 3,4','1'),
+(13,'Lempar Bola','SD','Kelas 5,6','1'),
+(14,'5x80M Estafet','SD','Kelas 1,2','2'),
+(15,'5x80M Estafet','SD','Kelas 3,4','2'),
+(16,'5x80M Estafet','SD','Kelas 5,6','2'),
+(17,'Lari 100M','SMP','','1'),
+(18,'Lari 100M','SMA','','1'),
+(19,'Lari 400M','SMP','','1'),
+(20,'Lari 400M','SMA','','1'),
+(21,'Lari 800M','SMP','','1'),
+(22,'Lari 800M','SMA','','1'),
+(23,'Lari 1500M','SMP','','1'),
+(24,'Lari 1500M','SMA','','1'),
+(25,'Jalan Cepat 3000M','SMP','','1'),
+(26,'Jalan Cepat 3000M','SMA','','1'),
+(27,'Lompat Jauh','SMP','','1'),
+(28,'Lompat Jauh','SMA','','1'),
+(29,'Lompat Tinggi','SMP','','1'),
+(30,'Lompat Tinggi','SMA','','1'),
+(31,'Tolak Peluru','SMP','','1'),
+(32,'Tolak Peluru','SMA','','1'),
+(33,'4x100M Estafet','SMP','','2'),
+(34,'4x100M Estafet','SMA','','2'),
+(35,'Lempar Lembing','SMA','','1');
 
-/*Table structure for table `tbl_nomorpertangdinganatlet` */
+/*Table structure for table `tbl_nomorpertandinganatlet` */
 
-DROP TABLE IF EXISTS `tbl_nomorpertangdinganatlet`;
+DROP TABLE IF EXISTS `tbl_nomorpertandinganatlet`;
 
-CREATE TABLE `tbl_nomorpertangdinganatlet` (
+CREATE TABLE `tbl_nomorpertandinganatlet` (
   `idNomorPertandinganAtlet` int(128) NOT NULL AUTO_INCREMENT,
   `idAtlet` int(128) DEFAULT NULL,
   `idNomorPertandingan` int(128) DEFAULT NULL,
   PRIMARY KEY (`idNomorPertandinganAtlet`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `tbl_nomorpertangdinganatlet` */
+/*Data for the table `tbl_nomorpertandinganatlet` */
+
+insert  into `tbl_nomorpertandinganatlet`(`idNomorPertandinganAtlet`,`idAtlet`,`idNomorPertandingan`) values 
+(9,4,2),
+(10,4,11),
+(11,4,16),
+(12,5,2),
+(13,5,19),
+(14,6,35),
+(15,7,34);
 
 /*Table structure for table `tbl_pertandingan` */
 
@@ -183,12 +243,18 @@ CREATE TABLE `tbl_sekolahatlet` (
   `namaSekolah` varchar(128) DEFAULT NULL,
   `idAtlet` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`idSekolahAtlet`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tbl_sekolahatlet` */
 
 insert  into `tbl_sekolahatlet`(`idSekolahAtlet`,`jenjang`,`namaSekolah`,`idAtlet`) values 
-(1,'SD','SDN Marga Asih','1');
+(1,'SD','SDN Marga Asih','1'),
+(2,'SD','SDN Marga Asih','2'),
+(3,'SD','SDN Marga Asih','3'),
+(4,'SD','SDN Marga Asih','4'),
+(5,'SMP','SDN Marga Asih','5'),
+(6,'SMA','SMAN 6 Bandung','6'),
+(7,'SMA','SMA Banjaran','7');
 
 /*Table structure for table `tbl_user` */
 
@@ -209,7 +275,7 @@ CREATE TABLE `tbl_user` (
   `fotoUser` varchar(128) DEFAULT 'user-default.jpg',
   `role_id` char(1) DEFAULT '0',
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tbl_user` */
 
@@ -225,7 +291,9 @@ insert  into `tbl_user`(`idUser`,`username`,`nama`,`password`,`hintPass`,`tangga
 (11,'Sefaokta@gmail.com','Okta Sefa Dania','$2y$10$wyvA76B3E2AwQBICnGA5uepnfaSSzSq6YyADNW9M97O5GzpFYEWM6','okta','2020-02-25','081234567545','','Jl. Raya Cibeurem No 234 ','SMKN 11 Bandung','1','user-default.jpg','1'),
 (12,'Puspa@gmail.co.id','Puspa Sari Wangi','$2y$10$PXFN1tNtbJAZBRUlPLNKzOyE9i.Xt5MX/vwC766P7BCsm5LXtOI/e','puspa','2020-02-25','08989089768','','Jl. Abdi Negara no 24 Abdi Negara Kab. Bandung','SMA Muhammadyah 5 Bandung','1','user-default.jpg','1'),
 (13,'Putriekasari@gmail.co.id','Eka Putri Sari','$2y$10$UukjjevgOztl2lQ0jq/ND.o1e5HTlo8GAivCpFCfpmIA4a/JTds8u','eka','2020-02-25','081234567123','','Jl. Ciumbuleuit Gang H. Masbur 3 No 17','SMAN 2 Bandung','0','user-default.jpg','1'),
-(14,'admin@gmail.com','Administrator','$2y$10$9HgqniCu98WmpCZ0TL36ieqhKhuPYHhePghMbtsYQCAMKpTS/Vt7K',NULL,'2020-02-26',NULL,NULL,NULL,NULL,'1','user-default.jpg','0');
+(14,'admin@gmail.com','Administrator','$2y$10$9HgqniCu98WmpCZ0TL36ieqhKhuPYHhePghMbtsYQCAMKpTS/Vt7K',NULL,'2020-02-26',NULL,NULL,NULL,NULL,'1','user-default.jpg','0'),
+(15,'szalsa@gmail.com','szalsa','$2y$10$QjXKbAHeSahzdDx1E8QRZeHgrxYQGVBOjKGUwCvCEv55M.oBMr092',NULL,'2020-02-26',NULL,NULL,NULL,NULL,'1','user-default.jpg','1'),
+(16,'rizkika@gmail.com','rizkika','$2y$10$jG52Tt2WJEdhk460bYROquKCPOcQO2.33ChS89cw7SDsKSyTLQW7K',NULL,'2020-02-27',NULL,NULL,NULL,NULL,'1','user-default.jpg','1');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
